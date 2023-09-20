@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore - List of all books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <body>
     <div>
-        <table>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -27,7 +28,7 @@
                     <td th:text="${book.year}"></td>
                     <td th:text="${book.price}"></td>
                     <td>
-                        <a th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
+                        <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
                     </td>
                     <td>
                         <a th:href="@{/edit/{id}(id=${book.id})}">Edit</a>
@@ -35,7 +36,7 @@
                 </tr>
                 </tdoby>
         </table>
-        <input type="submit" value="Add Book" onClick="location.href='/add'" />
+        <a href="/add" class="btn btn-success">Add Book</a>
     </div>
 </body>
 
