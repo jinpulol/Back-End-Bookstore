@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookstore</title>
+    <title>Bookstore - List of all books</title>
 </head>
 
 <body>
@@ -26,9 +26,13 @@
                     <td th:text="${book.isbn}"></td>
                     <td th:text="${book.year}"></td>
                     <td th:text="${book.price}"></td>
+                    <td>
+                        <a th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
+                    </td>
                 </tr>
                 </tdoby>
         </table>
+        <input type="submit" value="Add Book" onClick="location.href='/add'" />
     </div>
 </body>
 

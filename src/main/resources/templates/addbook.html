@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore - Add new book</title>
+</head>
+
+<body>
+    <div>
+        <h2>Add new book</h2>
+        <div>
+            <form th:object="${book}" th:action="@{save}" action="#" method="post">
+                <div>
+                    <label for="title">Title: </label> <br />
+                    <input type="text" id="title" th:field="*{title}" required />
+                </div>
+                <div>
+                    <label for="author">Author: </label> <br />
+                    <input type="text" id="author" th:field="*{author}" required />
+                </div>
+                <div>
+                    <label for="isbn">ISBN: </label> <br />
+                    <input type="text" id="isbn" th:field="*{isbn}" required />
+                </div>
+                <div>
+                    <label for="year">Publication year: </label> <br />
+                    <input type="text" id="year" th:field="*{year}" required />
+                </div>
+                <div>
+                    <label for="price">Price: </label> <br />
+                    <input type="text" id="price" th:field="*{price}" required />
+                </div>
+                <input type="submit" value="Add Book" />
+                <input type="button" onclick="location.href='/booklist'" value="Cancel" />
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
