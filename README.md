@@ -1,2 +1,2 @@
 # Back-End-Bookstore
-Haaga-Helia Back-End course, Bookstore exercise
+Haaga-Helian Back end -ohjelmointikurssin Bookstore-tehtävä
