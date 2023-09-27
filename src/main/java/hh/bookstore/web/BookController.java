@@ -16,12 +16,7 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    @GetMapping("/index")
-    public String indexPage() {
-
-        return "index";
-    }
-
+    // list all books
     @GetMapping("/booklist")
     public String listBooks(Model model) {
         model.addAttribute("books", bookRepository.findAll());
@@ -29,6 +24,7 @@ public class BookController {
         return "booklist";
     }
 
+    // add new book
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
@@ -36,6 +32,7 @@ public class BookController {
         return "addbook";
     }
 
+    // save new book
     @PostMapping("/save")
     public String saveBook(Book book) {
         bookRepository.save(book);
@@ -43,6 +40,7 @@ public class BookController {
         return "redirect:booklist";
     }
 
+    // delete book
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
         bookRepository.deleteById(bookId);
@@ -50,6 +48,7 @@ public class BookController {
         return "redirect:../booklist";
     }
 
+    // edit book
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", bookRepository.findById(bookId));

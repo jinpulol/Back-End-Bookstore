@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Book {
 
+    // attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -19,6 +20,7 @@ public class Book {
     private String isbn;
     private double price;
 
+    // constructors
     public Book() {
     }
 
@@ -31,6 +33,7 @@ public class Book {
         this.price = price;
     }
 
+    // getters and setters
     public long getId() {
         return id;
     }
@@ -79,6 +82,7 @@ public class Book {
         this.price = price;
     }
 
+    // toString
     @Override
     public String toString() {
         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
