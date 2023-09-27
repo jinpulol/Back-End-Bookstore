@@ -25,23 +25,32 @@ public class BookstoreApplication {
 		return (args) -> {
 
 			log.info("Save some categories");
-			categoryRepository.save(new Category("Fantasy"));
-			categoryRepository.save(new Category("Science"));
-			categoryRepository.save(new Category("Kids"));
+
+			Category cat1 = new Category("Fantasy");
+			Category cat2 = new Category("Science");
+			Category cat3 = new Category("Kids");
+
+			categoryRepository.save(cat1);
+			categoryRepository.save(cat2);
+			categoryRepository.save(cat3);
 
 			log.info("Save few books");
-			bookRepository.save(new Book("Why We Sleep: The New Science of Sleep and Dreams", "Matthew Walker", 2018,
-					"978-0141983769", 28.53));
-			bookRepository
-					.save(new Book("PREORDER The Last One", "Rachel Howzell Hall", 2024, "978-1649374400", 31.90));
-			bookRepository.save(new Book("Just Because", "Matthew McConaughey", 2023, "978-0593622032", 15.72));
+
+			Book book1 = new Book("Why We Sleep: The New Science of Sleep and Dreams", "Matthew Walker", 2018,
+					"978-0141983769", 28.53, cat2);
+			Book book2 = new Book("PREORDER The Last One", "Rachel Howzell Hall", 2024, "978-1649374400", 31.90, cat1);
+			Book book3 = new Book("Just Because", "Matthew McConaughey", 2023, "978-0593622032", 15.72, cat3);
+
+			bookRepository.save(book1);
+			bookRepository.save(book2);
+			bookRepository.save(book3);
 
 			log.info("Fetch all categories");
 
 			for (Category category : categoryRepository.findAll()) {
 				log.info(category.toString());
 			}
-			
+
 			log.info("Fetch all books");
 			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());
