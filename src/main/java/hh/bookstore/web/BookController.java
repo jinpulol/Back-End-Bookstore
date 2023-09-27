@@ -32,7 +32,7 @@ public class BookController {
         return "addbook";
     }
 
-    // save new book
+    // save new book or edits
     @PostMapping("/save")
     public String saveBook(Book book) {
         bookRepository.save(book);
