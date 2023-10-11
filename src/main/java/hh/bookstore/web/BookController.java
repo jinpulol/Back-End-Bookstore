@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +28,12 @@ public class BookController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    // login page
+    @GetMapping("/login")
+    public String LogIn() {
+        return "login";
+    }
 
     // RESTful service to get all books
     @RequestMapping(value="/books", method = RequestMethod.GET)
@@ -66,6 +73,7 @@ public class BookController {
     }
 
     // delete book
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
         bookRepository.deleteById(bookId);
