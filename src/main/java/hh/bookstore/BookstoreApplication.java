@@ -11,6 +11,8 @@ import hh.bookstore.domain.Book;
 import hh.bookstore.domain.BookRepository;
 import hh.bookstore.domain.Category;
 import hh.bookstore.domain.CategoryRepository;
+import hh.bookstore.domain.User;
+import hh.bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,8 +23,20 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository,
+			UserRepository userRepository) 
+			{
 		return (args) -> {
+
+			// add here examples
+
+			User user1 = new User("user", "$2a$10$LgdLGFOAT13pGzfUN7q...A1Rljdc7e8uxWX/l6ZzYFy4dIgo3WMq",
+					"user@bookstore.test", "USER"); // user
+			User user2 = new User("admin", "$2a$10$/8dsriIsU/iD2CJyRyrrlO0tRLLjZ5eXrGp/qrHUPUsD0bExUTnKS",
+					"admin@bookstore.test", "ADMIN"); // admin
+
+			userRepository.save(user1);
+			userRepository.save(user2);
 
 			log.info("Save some categories");
 
